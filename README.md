@@ -94,6 +94,7 @@ Open http://localhost:3000 in your browser.
 | `/`                       | GET      | Homepage displaying products                    |
 | `/login`                  | GET/POST | Login page using Google or credential login     |
 | `/products`               | GET      | List all products                               |
+| `/products/[id]`          | GET      | Show details of a single product                |
 | `/dashboard`              | GET      | User dashboard (protected)                      |
 | `/dashboard/addproduct`   | GET      | Add new product page (authenticated users only) |
 | `/api/items`              | POST     | Add a new product to the database               |
