@@ -1,15 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lora } from "next/font/google";
 import "./globals.css";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import NextAuthSessionProvider from "@/Providers/NextAuthSessionProviders";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const loraFont = Lora({
+  weight: ["400"],
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -18,12 +21,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" data-theme="light">
+      <NextAuthSessionProvider>
+        <body className={`${loraFont.className} antialiased`}>
+          <div className="max-w-5xl mx-auto">
+            <div>
+              <NavBar></NavBar>
+            </div>
+            <div className="min-h-screen">{children}</div>
+
+            <footer className="text-red-500">
+              <Footer></Footer>
+            </footer>
+          </div>
+        </body>
+      </NextAuthSessionProvider>
     </html>
   );
 }
